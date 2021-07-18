@@ -1,5 +1,5 @@
 // import './index.css'
-import { Container, TextField, Select, Button, Card, MenuItem, InputLabel, FormControl, CardContent, Typography } from '@material-ui/core'
+import { Container, TextField, Select, Button, Card, MenuItem, InputLabel, FormControl, CardContent, Typography, List, ListItem } from '@material-ui/core'
 import { useState } from 'react'
 
 const ContainerStyle = {
@@ -14,22 +14,31 @@ const CardStyle = {
 }
 
 const InputStyle = {
-  width: '300px',
+  marginBottom: '15px',
+  maxWidth: '200px',
+  minWidth: '80px',
+  width: '100%',
   verticalAlign: 'text-bottom'
 }
 
 const ButtonStyle = {
-  width: '150px',
-  margin: '0 0 0 15px',
-  verticalAlign: 'text-bottom'
+  height: '35px',
 }
 
-const RowStyle = {
-  verticalAlign: 'text-bottom'
+const ListStyle = {
+  padding: 0,
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
+  alignItems: 'baseline'
 }
 
-
-// NRZ-I, NRZ-L, AMI, Pseudoternário, Manchester, Mancherter Diferencial
+const ListItemStyle = {
+  width: 'fit-content',
+  margin: 0,
+  padding: 0
+}
 
 function Input({submit, options}) {
   const [data, setData] = useState('')
@@ -37,21 +46,21 @@ function Input({submit, options}) {
  
   const handleBinaryInput = (e) => {
     const lastChar = e.target.value[e.target.value.length - 1]
-    if (lastChar === '0' || lastChar === '1') setData(e.target.value)
+    if (lastChar === '0' || lastChar === '1' || !e.target.value.length) setData(e.target.value)
   }
   return (
     <Container style={ContainerStyle}>
       <Card style={CardStyle}>
         <CardContent>
-          <Typography style={{ fontSize: 16 }} color="textPrimary" gutterBottom>
+          <Typography style={{ fontSize: 16 }} color="textPrimary">
             Conversor de códigos de linha
           </Typography>
-          <Typography style={{ fontSize: 14 }} color="textSecondary" gutterBottom>
+          <Typography style={{ fontSize: 14 }} color="textSecondary">
             Preencha as informações abaixo e clique no botão 'Converter' para utilizar o conversor.
           </Typography>
         
-          <FormControl>
-              <InputLabel id='oi'>Selecione o tipo de código de linha</InputLabel>
+          <FormControl style={{ margin: 0, width: '100%'}}>
+              <InputLabel id='oi'>Código de linha</InputLabel>
               <Select
                 labelId='oi'
                 id="select"
@@ -68,12 +77,16 @@ function Input({submit, options}) {
                   ))
                 }
               </Select>
-            <row style={RowStyle}>
-              <TextField value={data} onChange={handleBinaryInput} style={InputStyle} label="Sinal de entrada" />
-              <Button style={ButtonStyle} variant='outlined' onClick={() => submit({data, type})}>
-                Converter
-              </Button>
-            </row>
+            <List style={ListStyle}>
+              <ListItem style={ListItemStyle}>
+                <TextField value={data} onChange={handleBinaryInput} style={InputStyle} label="Sinal de entrada" />
+              </ListItem>
+              <ListItem style={ListItemStyle}>
+                <Button style={ButtonStyle} variant='outlined' onClick={() => submit({data, type})}>
+                  Converter
+                </Button>
+              </ListItem>
+            </List>
           </FormControl>
         </CardContent>
       </Card>

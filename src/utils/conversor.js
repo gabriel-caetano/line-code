@@ -5,7 +5,6 @@ export default function conversor(data, types) {
     { x: idx + 1, y: Number(sign) },
   ]);
   const originalPoints = newArr.flat();
-  console.log(originalPoints);
   const newData = {
     originalValue: data.data,
     originalPoints,

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Container } from '@material-ui/core';
 import Input from './components/Input';
-import Graph from './components/Graph';
+import Output from './components/Output';
 import conversor from './utils/conversor';
 
 const AppStyle = {
   backgroundColor: '#CCC',
-  maxWidth: '100%',
-  margin: '0 auto',
+  maxWidth: '100vw',
+  minHeight: '100vh',
   display: 'flex',
   flexDirection: 'column',
 };
@@ -22,7 +22,12 @@ const lineCodeTypes = Object.freeze([
 ]);
 
 function App() {
-  const [encodedData, setEncodedData] = useState({});
+  const [encodedData, setEncodedData] = useState({
+    originalValue: '',
+    originalPoints: [],
+    convertedPoints: [],
+    typeName: null,
+  });
 
   const updateData = (data) => {
     const newData = conversor(data, lineCodeTypes);
@@ -30,10 +35,8 @@ function App() {
   };
   return (
     <Container style={AppStyle}>
-      <header>
-        <Input submit={updateData} options={lineCodeTypes} />
-        <Graph data={encodedData} />
-      </header>
+      <Input submit={updateData} options={lineCodeTypes} />
+      <Output data={encodedData} />
     </Container>
   );
 }
