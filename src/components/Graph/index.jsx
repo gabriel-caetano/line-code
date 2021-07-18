@@ -1,5 +1,6 @@
-// import './index.css'
 import { Container, Card } from '@material-ui/core'
+import { VictoryChart, VictoryLine, VictoryTheme } from 'victory'
+
 
 const ContainerStyle = {
   margin: '0 3rem',
@@ -9,17 +10,30 @@ const ContainerStyle = {
 }
 
 const CardStyle = {
-  width: '500px',
+  width: '1000px',
+  height: '500px',
+  padding: '0 40px 40px'
 }
 
 
 
 
 function Graph({data}) {
+  // const length = data.originalValue.length + 3
+  const width = '1500px'
+  console.log(data.originalPoints);
+  const chartStyle = {
+    width
+  }
   return (
     <Container style={ContainerStyle}>
       <Card style={CardStyle}>
-        <p>Sinal: { data.originalPoints ? data.originalPoints : 'vazio' }</p>
+        <h1>Conversão direta dos bits</h1>
+        <VictoryChart theme={VictoryTheme.grayscale} domain={{ y: [-3, 3] }} style={{ width: '1500px', height: '500px !important'}}>
+          <VictoryLine
+            data={data.originalPoints ? data.originalPoints : []}
+          />
+        </VictoryChart>
         Gráfico vai aparecer aqui
       </Card>
     </Container>
