@@ -4,6 +4,14 @@ import Input from './components/Input';
 import Graph from './components/Graph';
 import conversor from './utils/conversor';
 
+const AppStyle = {
+  backgroundColor: '#CCC',
+  maxWidth: '100%',
+  margin: '0 auto',
+  display: 'flex',
+  flexDirection: 'column',
+};
+
 const lineCodeTypes = Object.freeze([
   'NRZ-I',
   'NRZ-L',
@@ -21,9 +29,11 @@ function App() {
     setEncodedData(newData);
   };
   return (
-    <Container>
-      <Input submit={updateData} options={lineCodeTypes} />
-      <Graph data={encodedData} />
+    <Container style={AppStyle}>
+      <header>
+        <Input submit={updateData} options={lineCodeTypes} />
+        <Graph data={encodedData} />
+      </header>
     </Container>
   );
 }

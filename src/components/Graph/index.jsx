@@ -20,11 +20,8 @@ const CardStyle = {
 
 function Graph({data}) {
   // const length = data.originalValue.length + 3
-  const width = '1500px'
   console.log(data.originalPoints);
-  const chartStyle = {
-    width
-  }
+
   return (
     <Container style={ContainerStyle}>
       <Card style={CardStyle}>
