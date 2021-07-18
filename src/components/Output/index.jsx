@@ -26,8 +26,9 @@ function Output({data}) {
           </Typography>
           <Graph input={data.originalValue} points={data.originalPoints} />
           <Typography style={{ textAlign: 'center' }}>
-            Conversão do tipo {data.type}
+            Código de linha tipo {data.typeName}
           </Typography>
+          <Graph input={data.originalValue} points={data.originalPoints} />
         </CardContent>
       </Card>
     </Container>
