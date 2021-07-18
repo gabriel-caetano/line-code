@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Container } from '@material-ui/core';
+import Input from './components/Input';
+import Graph from './components/Graph';
+import conversor from './utils/conversor';
+
+const lineCodeTypes = Object.freeze([
+  'NRZ-I',
+  'NRZ-L',
+  'AMI',
+  'Pseudoternário',
+  'Manchester',
+  'Mancherter Diferencial',
+]);
 
 function App() {
+  const [encodedData, setEncodedData] = useState({});
+
+  const updateData = (data) => {
+    const newData = conversor(data, lineCodeTypes);
+    setEncodedData(newData);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Input submit={updateData} options={lineCodeTypes} />
+      <Graph data={encodedData} />
+    </Container>
   );
 }
 
