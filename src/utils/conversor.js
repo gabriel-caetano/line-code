@@ -1,5 +1,6 @@
 export default function conversor(data, types) {
   const arr = data.data.split('');
+  console.log(arr);
   const newArr = arr.map((sign, idx) => [
     { x: idx, y: Number(sign) },
     { x: idx + 1, y: Number(sign) },
