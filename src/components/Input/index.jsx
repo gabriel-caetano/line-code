@@ -45,8 +45,12 @@ function Input({submit, options}) {
   const [type, setType] = useState('')
  
   const handleBinaryInput = (e) => {
-    const lastChar = e.target.value[e.target.value.length - 1]
-    if (lastChar === '0' || lastChar === '1' || !e.target.value.length) setData(e.target.value)
+    const nonBinary = /[^0-1]+/g
+    const binary = /[01]*/g
+    const fail = nonBinary.test(e.target.value)
+    const clean = e.target.value.match(binary)
+    if (!fail)
+      setData(clean[0])
   }
   return (
     <Container style={ContainerStyle}>
