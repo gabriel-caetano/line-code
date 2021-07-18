@@ -15,7 +15,7 @@ const SvgStyle = {
 
 function Graph({input, points}) {
   const length = input.length ? input.length + 2 : 6
-  const width = length*20
+  const width = length*20 + 120
   const header = input.split('').map((char, idx) => 
     ({idx: char})
   )
@@ -28,9 +28,9 @@ function Graph({input, points}) {
 
   return (
     <Container style={ContainerStyle}>
-      <svg width={width} height={200} style={SvgStyle}>
+      <svg width={width-100} height={200} style={SvgStyle}>
         <VictoryAxis crossAxis
-          width={width+120}
+          width={width}
           height={200}
           tickValues={tick}
           domain={[-1, length+2]}
@@ -39,7 +39,7 @@ function Graph({input, points}) {
           standalone={false}
           />
         <VictoryAxis dependentAxis crossAxis
-          width={width+120}
+          width={width}
           height={200}
           tickValues={[-2,-1,0,1,2]}
           domain={[-3, 3]}
@@ -49,7 +49,7 @@ function Graph({input, points}) {
         />
         <VictoryLine
           standalone={false}
-          width={width+120}
+          width={width}
           height={200}
           domain={{x: [-1, length+2], y:[-3, 3]}}
           style={{
