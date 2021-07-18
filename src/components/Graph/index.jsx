@@ -15,7 +15,7 @@ const SvgStyle = {
 
 function Graph({input, points}) {
   const length = input.length ? input.length + 2 : 6
-  const width = length*20 + 120
+  const width = length*20 + 120 
   const header = input.split('').map((char, idx) => 
     ({idx: char})
   )
