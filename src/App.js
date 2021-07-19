@@ -18,7 +18,7 @@ const lineCodeTypes = Object.freeze([
   'AMI',
   'Pseudoternário',
   'Manchester',
-  'Mancherter Diferencial',
+  'Manchester Diferencial',
 ]);
 
 function App() {
