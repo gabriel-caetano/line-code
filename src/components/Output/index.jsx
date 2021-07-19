@@ -4,7 +4,7 @@ import Graph from '../Graph'
 
 const ContainerStyle = {
   maxWidt: '100%',
-  padding: '2rem',
+  padding: '2rem 0 2rem',
   display: 'flex',
   justifyContent: 'center'
 }
