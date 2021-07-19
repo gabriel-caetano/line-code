@@ -9,7 +9,6 @@ const ContainerStyle = {
 
 const SvgStyle = {
   border: '1px solid black',
-  paddingRight: '50px'
 }
 
 
@@ -17,7 +16,7 @@ function Graph({input, points}) {
   const length = input.length ? input.length + 2 : 6
   const width = length*20 + 120 
   const header = input.split('').map((char, idx) => 
-    ({idx: char})
+    char
   )
 
   const tick = [0, 1, 2, 3, 4, 5]
@@ -28,12 +27,31 @@ function Graph({input, points}) {
 
   return (
     <Container style={ContainerStyle}>
-      <svg width={width-100} height={200} style={SvgStyle}>
+      <svg width={width} height={200} style={SvgStyle}>
+        {header.map((char, index) => {
+          return (
+            <VictoryLine
+            width={width}
+            height={200}
+            domain={{x: [-1, length+2], y:[-3, 3]}}
+            style={{
+              data: { strokeWidth: 0 },
+              label: {
+
+              }
+            }}
+            data={[{x: index+0.5, y: 2}, {x: index+0.5, y: 2}]}
+            labels={header.length ? `${char}` : ''}
+            labelComponent={<VictoryLabel y={75} />}
+            standalone={false}
+            />
+          )
+        })}
         <VictoryAxis crossAxis
           width={width}
           height={200}
           tickValues={tick}
-          domain={[-1, length+2]}
+          domain={{x: [-1, length+2], y:[-3, 3]}}
           theme={VictoryTheme.material}
           offsetY={100}
           standalone={false}
@@ -42,9 +60,9 @@ function Graph({input, points}) {
           width={width}
           height={200}
           tickValues={[-2,-1,0,1,2]}
-          domain={[-3, 3]}
+          domain={{x: [-1, length+2], y:[-3, 3]}}
           theme={VictoryTheme.material}
-          offsetX={67}
+          offsetX={68}
           standalone={false}
         />
         <VictoryLine
@@ -55,7 +73,7 @@ function Graph({input, points}) {
           style={{
             data: { stroke: "black" },
           }}
-          data={ points.length ? points : [{ x: 0, y: 0 }] }
+          data={ points.length ? points : [{ x: 0, y: 0 }, {x: 1, y: 0}] }
         />
       </svg>
     </Container>
