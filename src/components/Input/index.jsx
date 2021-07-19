@@ -71,9 +71,10 @@ function Input({submit, options}) {
                 value={type}
                 style={InputStyle}
                 onChange={(event) => {
-                  setType(event.target.value)
-                  if (data !== '')
-                    submit({data, type: event.target.value})
+                  const newType = event.target.value
+                  setType(newType)
+                  if (data !== '' && newType)
+                    submit({data, type: newType})
                 }}
               >
                 <MenuItem value="" key='a'>
