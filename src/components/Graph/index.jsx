@@ -35,10 +35,7 @@ function Graph({input, points}) {
             height={200}
             domain={{x: [-1, length+2], y:[-3, 3]}}
             style={{
-              data: { strokeWidth: 0 },
-              label: {
-
-              }
+              data: { strokeWidth: 0 }
             }}
             data={[{x: index+0.5, y: 2}, {x: index+0.5, y: 2}]}
             labels={header.length ? `${char}` : ''}
@@ -62,7 +59,7 @@ function Graph({input, points}) {
           tickValues={[-2,-1,0,1,2]}
           domain={{x: [-1, length+2], y:[-3, 3]}}
           theme={VictoryTheme.material}
-          offsetX={68}
+          x={0}
           standalone={false}
         />
         <VictoryLine
@@ -73,7 +70,7 @@ function Graph({input, points}) {
           style={{
             data: { stroke: "black" },
           }}
-          data={ points.length ? points : [{ x: 0, y: 0 }, {x: 1, y: 0}] }
+          data={ points.length ? points : [{ x: 0, y: 0 }] }
         />
       </svg>
     </Container>
