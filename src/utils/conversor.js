@@ -16,7 +16,14 @@ const convert = {
 
 export default function conversor(data, types) {
   const arr = data.data.split('');
-  console.log(data.type);
+  if (!convert[data.type]) {
+    return {
+      originalValue: data.data,
+      originalPoints: [],
+      convertedPoints: [],
+      typeName: null,
+    };
+  }
   const convertedPoints = convert[data.type](data.data);
   const newArr = arr.map((sign, idx) => [
     { x: idx, y: Number(sign) },

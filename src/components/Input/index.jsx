@@ -73,7 +73,7 @@ function Input({submit, options}) {
                 onChange={(event) => {
                   const newType = event.target.value
                   setType(newType)
-                  if (data !== '' && newType)
+                  if (data !== '')
                     submit({data, type: newType})
                 }}
               >
