@@ -13,8 +13,8 @@ const AppStyle = {
 };
 
 const lineCodeTypes = Object.freeze([
-  'NRZ-I',
   'NRZ-L',
+  'NRZ-I',
   'AMI',
   'Pseudoternário',
   'Manchester',

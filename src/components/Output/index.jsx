@@ -31,7 +31,7 @@ function Output({data}) {
               <Typography style={{ textAlign: 'center' }}>
                 Código de linha tipo {data.typeName}
               </Typography>
-              <Graph input={data.originalValue} points={data.originalPoints} />
+              <Graph input={data.originalValue} points={data.convertedPoints} />
             </>)}
             {!data.typeName && (
               <Typography style={{ textAlign: 'center' }}>
