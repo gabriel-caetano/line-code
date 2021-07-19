@@ -70,7 +70,11 @@ function Input({submit, options}) {
                 id="select"
                 value={type}
                 style={InputStyle}
-                onChange={(event) => setType(event.target.value)}
+                onChange={(event) => {
+                  setType(event.target.value)
+                  if (data !== '')
+                    submit({data, type: event.target.value})
+                }}
               >
                 <MenuItem value="" key='a'>
                   <em>None</em>
