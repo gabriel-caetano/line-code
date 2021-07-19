@@ -92,7 +92,7 @@ function Graph({input, points}) {
           height={170}
           domain={{x: [0, length], y:[-2, 2]}}
           style={{
-            data: { stroke: "black" },
+            data: { stroke: "red" },
           }}
           data={ points.length ? points : [{ x: 0, y: 0 }] }
         />
