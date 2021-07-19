@@ -20,7 +20,7 @@ function Graph({input, points}) {
   )
 
   const tick = [1, 2, 3, 4, 5]
-  for (let i = 6; i < input.length; i++) {
+  for (let i = 6; i <= input.length; i++) {
     tick.push(i)
   }
   if (!tick.length) tick.push()
@@ -48,6 +48,11 @@ function Graph({input, points}) {
           width={width}
           height={200}
           tickValues={tick}
+          style={{
+            tickLabels: {
+              fill: 'transparent'
+            }
+          }}
           domain={{x: [-1, length+2], y:[-3, 3]}}
           theme={VictoryTheme.material}
           offsetY={100}
