@@ -19,7 +19,7 @@ function Graph({input, points}) {
     char
   )
 
-  const tick = [0, 1, 2, 3, 4, 5]
+  const tick = [1, 2, 3, 4, 5]
   for (let i = 6; i < input.length; i++) {
     tick.push(i)
   }
