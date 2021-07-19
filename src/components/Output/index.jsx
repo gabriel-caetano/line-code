@@ -17,6 +17,7 @@ const CardStyle = {
 
 
 function Output({data}) {
+  console.log(data);
   return (
     <Container style={ContainerStyle}>
       <Card style={CardStyle}>
@@ -25,10 +26,13 @@ function Output({data}) {
             Conversão direta dos bits
           </Typography>
           <Graph input={data.originalValue} points={data.originalPoints} />
-          <Typography style={{ textAlign: 'center' }}>
-            Código de linha tipo {data.typeName}
-          </Typography>
-          <Graph input={data.originalValue} points={data.originalPoints} />
+          {data.typeName && (
+            <>
+              <Typography style={{ textAlign: 'center' }}>
+                Código de linha tipo {data.typeName}
+              </Typography>
+              <Graph input={data.originalValue} points={data.originalPoints} />
+            </>)}
         </CardContent>
       </Card>
     </Container>
