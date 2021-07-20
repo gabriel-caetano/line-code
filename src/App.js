@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { Container } from '@material-ui/core';
 import Input from './components/Input';
 import Output from './components/Output';
-import conversor from './utils/conversor';
-
+import converter, { convertions } from './utils/converter';
 const AppStyle = {
   backgroundColor: '#CCC',
   maxWidth: '100vw',
@@ -11,15 +10,6 @@ const AppStyle = {
   display: 'flex',
   flexDirection: 'column',
 };
-
-const lineCodeTypes = Object.freeze([
-  'NRZ-L',
-  'NRZ-I',
-  'AMI',
-  'Pseudoternário',
-  'Manchester',
-  'Manchester Diferencial',
-]);
 
 function App() {
   const [encodedData, setEncodedData] = useState({
@@ -29,13 +19,13 @@ function App() {
     typeName: null,
   });
 
-  const updateData = (data) => {
-    const newData = conversor(data, lineCodeTypes);
+  const updateData = async (data) => {
+    const newData = await converter(data);
     setEncodedData(newData);
   };
   return (
     <Container style={AppStyle}>
-      <Input submit={updateData} options={lineCodeTypes} />
+      <Input submit={updateData} options={Object.keys(convertions)} />
       <Output data={encodedData} />
     </Container>
   );

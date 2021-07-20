@@ -5,7 +5,7 @@ import pseudoternary from './pseudoternary';
 import manchester from './manchester';
 import diferentialManchester from './diferentialManchester';
 
-const convert = {
+export const convertions = {
   'NRZ-L': nrz_l,
   'NRZ-I': nrz_i,
   'AMI': ami,
@@ -14,9 +14,9 @@ const convert = {
   'Manchester Diferencial': diferentialManchester,
 };
 
-export default function conversor(data, types) {
-  const arr = data.data.split('');
-  if (!convert[data.type]) {
+export default function conversor(data) {
+  console.log(Object.keys(convertions));
+  if (!convertions[data.type] || data.data === '') {
     return {
       originalValue: data.data,
       originalPoints: [],
@@ -24,15 +24,9 @@ export default function conversor(data, types) {
       typeName: null,
     };
   }
-  const convertedPoints = convert[data.type](data.data);
-  const newArr = arr.map((sign, idx) => [
-    { x: idx, y: Number(sign) },
-    { x: idx + 1, y: Number(sign) },
-  ]);
-  const originalPoints = newArr.flat();
+  const convertedPoints = convertions[data.type](data.data);
   const newData = {
     originalValue: data.data,
-    originalPoints,
     convertedPoints,
     typeName: data.type,
   };
