@@ -25,6 +25,7 @@ function App() {
   };
   return (
     <Container style={AppStyle}>
+      <h1>Funcionou saporra</h1>
       <Input submit={updateData} options={Object.keys(convertions)} />
       <Output data={encodedData} />
     </Container>
